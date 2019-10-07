@@ -47,15 +47,19 @@ public class StringMethods {
 	
 	// if String s contains the word "underscores", change all of the spaces to underscores
 	public static String formatSpaces(String s) {
+		String s2 = s;
 		if(s.contains("underscores")) {
-			for(int i = 0; i < s.length(); i++) {
+			 s2 = s.replace(" ", "_");
+			/*for(int i = 0; i < s.length() -1; i++) {
 				if(s.substring(i, i+1).equals(" ")) {
 					s.replace(s.charAt(i), '_');
 					
 				}
 			}
+			*/
 		}
-		return s;
+	
+		return s2;
 	}
 
 	
@@ -84,19 +88,22 @@ public class StringMethods {
 				break;
 			}
 		}
-		if(Character.getNumericValue(one) > Character.getNumericValue(two)) {
-			if(Character.getNumericValue(one) > Character.getNumericValue(three)) {
-				return s1;
+	String s11 =	s1.trim();
+	String s22 =	s2.trim();
+	String s33 =	s3.trim();
+		if(Character.getNumericValue(one) < Character.getNumericValue(two)) {
+			if(Character.getNumericValue(one) < Character.getNumericValue(three)) {
+				return s11;
 			}
 		}
-		if(Character.getNumericValue(two) > Character.getNumericValue(one)) {
-			if(Character.getNumericValue(two) > Character.getNumericValue(three)) {
-				return s2;
+		if(Character.getNumericValue(two) < Character.getNumericValue(one)) {
+			if(Character.getNumericValue(two) < Character.getNumericValue(three)) {
+				return s22;
 			}
 		}
-		if(Character.getNumericValue(three) > Character.getNumericValue(two)) {
-			if(Character.getNumericValue(three) > Character.getNumericValue(one)) {
-				return s3;
+		if(Character.getNumericValue(three) < Character.getNumericValue(two)) {
+			if(Character.getNumericValue(three) < Character.getNumericValue(one)) {
+				return s33;
 			}
 		}
 		return "";
@@ -121,24 +128,38 @@ public class StringMethods {
 	
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
-		return 0;
+		int total = 0;
+		for(int i = 0; i < s.length() - substring.length() + 1; i++) {
+			if(s.substring(i, i + substring.length()).equals(substring)) {
+				total++;
+			}
+		}
+		return total;
 	}
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
-		return null;
+		String s1 = Utilities.encrypt(s.getBytes(), (byte) key);
+		return s1;
 	}
 
 	// Call Utilities.decrypt to decrypt the cyphertext
 	public static String decrypt(String s, char key) {
-		return null;
+		String s1 = Utilities.decrypt(s, (byte) key);
+		return s1;
 	}
 
 
 	// Return the number of words in String s that end with String substring
 	// You can assume there are no punctuation marks between words
 	public static int wordsEndsWithSubstring(String s, String substring) {
-		return 0;
+		int total = 0;
+		for(int i = 0; i < s.length() - substring.length(); i++ ) {
+			if(s.substring(i, i + substring.length() + 1).endsWith(substring + " ")) {
+				total++;
+			}
+		}
+		return total;
 	}
 	
 
