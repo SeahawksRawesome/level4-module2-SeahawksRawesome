@@ -167,6 +167,9 @@ public class StringMethods {
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
+		for(int i = 0; i < s.length() - substring.length(); i++) {
+			
+		}
 		return 0;
 	}
 
